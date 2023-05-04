@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<VBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@/stiil.css" />
+    </stylesheets>
+    <padding>
+        <javafx.geometry.Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+    <children>
+        <VBox alignment="CENTER" spacing="10.0">
+            <children>
+                <Label text="Algne valuuta kood:" />
+                <TextField fx:id="initialCurrencyField" promptText="Näiteks: EUR" />
+                <Label text="Teisendatav valuuta kood:" />
+                <TextField fx:id="convertedCurrencyField" promptText="Näiteks: USD" />
+                <Label text="Sisesta rahasumma:" />
+                <TextField fx:id="amountField" promptText="Näiteks: 100" />
+                <Button fx:id="convertButton" text="Teisenda" />
+            </children>
+        </VBox>
+        <GridPane alignment="CENTER" hgap="10.0" prefHeight="200.0" prefWidth="200.0" vgap="10.0">
+            <children>
+                <Label fx:id="resultLabel" GridPane.columnSpan="2" style="-fx-translate-x: 50;" />
+                <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Button fx:id="clearButton" text="Tühjenda väljad" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <javafx.geometry.Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+            </padding>
+        </GridPane>
+    </children>
+</VBox>
