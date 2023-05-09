@@ -1,8 +1,13 @@
 package com.example.currencyexchangeguiver2;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 
 public class LogiFail {
 
@@ -47,6 +52,25 @@ public class LogiFail {
             return x[0] + " " + x[1] + "\n" + x[2] + " " + x[3] + " " + x[4] + " " + x[5] + " " + x[6];
         } catch (IOException ex) {
             return "Varasemaid teisendusi pole";
+        }
+    }
+
+    public static void kuvaHoiatus() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Hoiatus");
+        alert.setHeaderText("See programm kasutab logifaile");
+        alert.setContentText("Kas soovite jätkata?");
+
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.YES);
+        ButtonType cancelButton = new ButtonType("Tühista", ButtonBar.ButtonData.NO);
+
+        alert.getButtonTypes().setAll(okButton, cancelButton);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == okButton) {
+            // kasutaja klikkis OK nuppu
+        } else {
+            // kasutaja klikkis Tühista nuppu või sulges dialoogiakna
         }
     }
 }

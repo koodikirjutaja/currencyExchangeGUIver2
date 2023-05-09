@@ -42,6 +42,8 @@
             primaryStage.setMaxWidth(900);
             primaryStage.setMaxHeight(500);
 
+
+            LogiFail.kuvaHoiatus();
             // Valuutakoodi väljad
             Label initialCurrencyLabel = new Label("Algne valuuta kood:");
             initialCurrencyField = new TextField();
@@ -102,7 +104,7 @@
 
                     double result = Math.round(rahaNetist(initialCurrency, amount, convertedCurrency));
 
-                    resultLabel.setText(String.format(amount + " " +initialCurrency + " = " + result + " " + convertedCurrency + "\n\nEelnev teisendus: " + LogiFail.getLastConversion()));
+                    resultLabel.setText(String.format(amount + " " + initialCurrency + " = " + result + " " + convertedCurrency + "\n\nEelnev teisendus: " + LogiFail.getLastConversion()));
                     String logiTeade = String.format("%.2f %s -> %.2f %s", amount, initialCurrency, result, convertedCurrency);
                     LogiFail.logi(logiTeade);
                 } catch (NumberFormatException ex) {
@@ -127,20 +129,6 @@
             primaryStage.show();
 
 
-        }
-
-        // Vastutab kasti suuruse seadistamise eest vastavalt akna suurusele
-        private void configureBoxesOnResize(Scene scene, VBox topBox, GridPane bottomGrid) {
-            scene.widthProperty().addListener((obs, oldVal, newVal) -> {
-                double newWidth = (double)newVal;
-                topBox.setMaxWidth(newWidth);
-                bottomGrid.setMaxWidth(newWidth);
-            });
-            scene.heightProperty().addListener((obs, oldVal, newVal) -> {
-                double newHeight = (double)newVal;
-                topBox.setMaxHeight(newHeight * 0.6); // Ülemine VBox võtab 60% kõrgusest
-                bottomGrid.setMaxHeight(newHeight * 0.4); // GridPane võtab 40% kõrgusest
-            });
         }
 
         public static void main(String[] args) {
