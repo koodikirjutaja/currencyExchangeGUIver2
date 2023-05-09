@@ -50,12 +50,28 @@
     -fx-font-weight: bold;
 }
 
-
-
 #result-label {
     -fx-font-size: 32pt;
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0.0, 0, 1);
+}
+
+#resultLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.vbox {
+    -fx-min-height: 200px;
+    -fx-max-height: 100%;
+}
+
+.grid-pane {
+    -fx-min-height: 100px;
+    -fx-max-height: 100%;
 }

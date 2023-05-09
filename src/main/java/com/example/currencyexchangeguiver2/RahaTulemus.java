@@ -16,6 +16,9 @@
     import javafx.stage.Stage;
     import java.util.Objects;
 
+
+
+
     public class RahaTulemus extends RahaNetist {
 
         @FXML
@@ -34,24 +37,33 @@
 
             primaryStage.setResizable(true);
 
+            primaryStage.setMinWidth(350);
+            primaryStage.setMinHeight(400);
+            primaryStage.setMaxWidth(900);
+            primaryStage.setMaxHeight(500);
 
             // Valuutakoodi väljad
             Label initialCurrencyLabel = new Label("Algne valuuta kood:");
             initialCurrencyField = new TextField();
+            initialCurrencyField.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-alignment: center; -fx-text-fill: #000000; -fx-display: flex; -fx-align-items: center;");
             initialCurrencyField.setPromptText("Näiteks: EUR");
 
             Label convertedCurrencyLabel = new Label("Teisendatav valuuta kood:");
             convertedCurrencyField = new TextField();
+            convertedCurrencyField.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-alignment: center; -fx-text-fill: #000000; -fx-display: flex; -fx-align-items: center;");
             convertedCurrencyField.setPromptText("Näiteks: USD");
 
             // Rahasumma väljad
             Label amountLabel = new Label("Sisesta rahasumma:");
             amountField = new TextField();
+            amountField.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-alignment: center; -fx-text-fill: #000000; -fx-display: flex; -fx-align-items: center;");
             amountField.setPromptText("Näiteks: 100");
 
             // Tulemus
             resultLabel = new Label();
+            resultLabel.setAlignment(Pos.CENTER);
             resultLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
+
 
             // Nupud
             Button convertButton = new Button("Teisenda");
@@ -88,15 +100,18 @@
                     double amount = Double.parseDouble(amountField.getText());
                     String convertedCurrency = convertedCurrencyField.getText().toUpperCase();
 
-                    double result = rahaNetist(initialCurrency, amount, convertedCurrency);
+                    double result = Math.round(rahaNetist(initialCurrency, amount, convertedCurrency));
 
-                    resultLabel.setText(String.format("%.2f %s = %.2f %s", amount, initialCurrency, result, convertedCurrency));
+                    resultLabel.setText(String.format(amount + " " +initialCurrency + " = " + result + " " + convertedCurrency + "\n\nEelnev teisendus: " + LogiFail.getLastConversion()));
+                    String logiTeade = String.format("%.2f %s -> %.2f %s", amount, initialCurrency, result, convertedCurrency);
+                    LogiFail.logi(logiTeade);
                 } catch (NumberFormatException ex) {
                     resultLabel.setText("Viga: palun sisesta summa numbrites.");
                 } catch (Exception ex) {
                     resultLabel.setText("Viga: midagi läks valesti. Kontrolli sisestatud andmeid.");
                 }
             });
+
             clearButton.setOnAction(e -> {
                 initialCurrencyField.clear();
                 convertedCurrencyField.clear();
@@ -112,6 +127,20 @@
             primaryStage.show();
 
 
+        }
+
+        // Vastutab kasti suuruse seadistamise eest vastavalt akna suurusele
+        private void configureBoxesOnResize(Scene scene, VBox topBox, GridPane bottomGrid) {
+            scene.widthProperty().addListener((obs, oldVal, newVal) -> {
+                double newWidth = (double)newVal;
+                topBox.setMaxWidth(newWidth);
+                bottomGrid.setMaxWidth(newWidth);
+            });
+            scene.heightProperty().addListener((obs, oldVal, newVal) -> {
+                double newHeight = (double)newVal;
+                topBox.setMaxHeight(newHeight * 0.6); // Ülemine VBox võtab 60% kõrgusest
+                bottomGrid.setMaxHeight(newHeight * 0.4); // GridPane võtab 40% kõrgusest
+            });
         }
 
         public static void main(String[] args) {
