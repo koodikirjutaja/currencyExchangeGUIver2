@@ -55,7 +55,7 @@ public class LogiFail {
         }
     }
 
-    public static void kuvaHoiatus() {
+    public static void kuvaHoiatus() throws Exception {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Hoiatus");
         alert.setHeaderText("See programm kasutab logifaile");
@@ -71,6 +71,8 @@ public class LogiFail {
             // kasutaja klikkis OK nuppu
         } else {
             // kasutaja klikkis Tühista nuppu või sulges dialoogiakna
+            System.out.println("Vajutati 'tühista' nuppu");
+            System.exit(1);
         }
     }
 }

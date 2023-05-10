@@ -32,7 +32,7 @@
 
 
         @Override
-        public void start(Stage primaryStage) {
+        public void start(Stage primaryStage) throws Exception {
             primaryStage.setTitle("Valuutakalkulaator");
 
             primaryStage.setResizable(true);
@@ -127,8 +127,6 @@
             scene.setFill(Color.LIGHTBLUE);
             primaryStage.setScene(scene);
             primaryStage.show();
-
-
         }
 
         public static void main(String[] args) {
