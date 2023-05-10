@@ -56,12 +56,12 @@ public class LogiFail {
     }
 
     public static void kuvaHoiatus() throws Exception {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Hoiatus");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Teade");
         alert.setHeaderText("See programm kasutab logifaile");
         alert.setContentText("Kas soovite jätkata?");
 
-        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.YES);
+        ButtonType okButton = new ButtonType("Jätka", ButtonBar.ButtonData.YES);
         ButtonType cancelButton = new ButtonType("Tühista", ButtonBar.ButtonData.NO);
 
         alert.getButtonTypes().setAll(okButton, cancelButton);

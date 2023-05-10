@@ -43,7 +43,7 @@
             primaryStage.setMaxHeight(500);
 
 
-            LogiFail.kuvaHoiatus();
+
             // Valuutakoodi väljad
             Label initialCurrencyLabel = new Label("Algne valuuta kood:");
             initialCurrencyField = new TextField();
@@ -121,12 +121,13 @@
                 resultLabel.setText("");
             });
 
-            Scene scene = new Scene(root, 500, 450);
+            Scene scene = new Scene(root, 500, 470);
             String css = Objects.requireNonNull(getClass().getResource("/stiil.css")).toExternalForm();
             scene.getStylesheets().add(css);
             scene.setFill(Color.LIGHTBLUE);
             primaryStage.setScene(scene);
             primaryStage.show();
+            LogiFail.kuvaHoiatus();
         }
 
         public static void main(String[] args) {
