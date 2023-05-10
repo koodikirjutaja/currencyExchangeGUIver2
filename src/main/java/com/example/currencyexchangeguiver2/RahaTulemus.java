@@ -102,7 +102,7 @@
                     double amount = Double.parseDouble(amountField.getText());
                     String convertedCurrency = convertedCurrencyField.getText().toUpperCase();
 
-                    double result = Math.round(rahaNetist(initialCurrency, amount, convertedCurrency));
+                    double result = rahaNetist(initialCurrency, amount, convertedCurrency);
 
                     resultLabel.setText(String.format(amount + " " + initialCurrency + " = " + result + " " + convertedCurrency + "\n\nEelnev teisendus: " + LogiFail.getLastConversion()));
                     String logiTeade = String.format("%.2f %s -> %.2f %s", amount, initialCurrency, result, convertedCurrency);
