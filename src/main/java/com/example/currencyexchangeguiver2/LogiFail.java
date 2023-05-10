@@ -19,7 +19,7 @@ public class LogiFail {
         try {
             fw = new FileWriter(FILENAME, true);
             bw = new BufferedWriter(fw);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
             Date currentDate = new Date();
             String formattedDate = sdf.format(currentDate);
             bw.write(formattedDate + ": " + teade);
