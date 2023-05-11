@@ -16,9 +16,6 @@
     import javafx.stage.Stage;
     import java.util.Objects;
 
-
-
-
     public class RahaTulemus extends RahaNetist {
 
         @FXML
@@ -35,8 +32,10 @@
         public void start(Stage primaryStage) throws Exception {
             primaryStage.setTitle("Valuutakalkulaator");
 
+            // Akna suuruse muutmise luba
             primaryStage.setResizable(true);
 
+            // Määrame akna miinimum- ja maksimumsuurused
             primaryStage.setMinWidth(350);
             primaryStage.setMinHeight(400);
             primaryStage.setMaxWidth(900);
@@ -55,7 +54,7 @@
             convertedCurrencyField.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-alignment: center; -fx-text-fill: #000000; -fx-display: flex; -fx-align-items: center;");
             convertedCurrencyField.setPromptText("Näiteks: USD");
 
-            // Rahasumma väljad
+            // Rahasumma väli
             Label amountLabel = new Label("Sisesta rahasumma:");
             amountField = new TextField();
             amountField.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-alignment: center; -fx-text-fill: #000000; -fx-display: flex; -fx-align-items: center;");
